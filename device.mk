@@ -16,6 +16,8 @@
 
 $(call inherit-product-if-exists, vendor/huawei/berkeley/berkeley-vendor.mk)
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -29,6 +31,11 @@ endif
 ifeq ($(TARGET_PRODUCT),carbon_berkeley)
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-carbon
+endif
+
+ifeq ($(TARGET_PRODUCT),du_berkeley)
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-du
 endif
 
 # Boot animation
